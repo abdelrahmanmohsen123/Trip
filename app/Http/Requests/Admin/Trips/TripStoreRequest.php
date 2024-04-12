@@ -11,7 +11,7 @@ class TripStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class TripStoreRequest extends FormRequest
     {
         return [
             //
+            'trip_date'=>['required','date'],
+            'contract_id'=>['required','exists:contracts,id'],
         ];
     }
 }

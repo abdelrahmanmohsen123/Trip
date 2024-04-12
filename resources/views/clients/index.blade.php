@@ -33,7 +33,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($clients as $client)
+               
+
+                @forelse($clients as $client)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ $client->name }}</td>
@@ -47,7 +49,16 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr class="m-auto text-center">
+                        <td colspan="5">
+                            <p class="btn btn-warning">Not Found Clients</p>
+
+
+                          </td>
+                    </tr>
+
+                    @endforelse
             </tbody>
         </table>
 

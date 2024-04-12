@@ -18,7 +18,7 @@ class ContractController extends Controller
     {
         //
         $contracts = Contract::paginate(10); // Paginate with 10 contracts per page
-        
+
         return view('contracts.index', compact('contracts'));
     }
 

@@ -15,9 +15,6 @@ class Trip extends Model
 
     }
 
-    public function trips(){
-        return $this->hasMany(client::class);
-
-    }
+    
 
 }

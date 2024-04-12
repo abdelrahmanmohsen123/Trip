@@ -14,7 +14,9 @@
         <!-- Navigation links or menu -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Task</a>
+              <a class="navbar-brand" href="{{route('contracts.index')}}">
+                <img src="{{asset('assets/task.jpg')}}" style="height: 30px" alt="">
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

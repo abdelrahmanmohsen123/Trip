@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contract;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TripController;
 use App\Http\Controllers\Admin\ClientController;
@@ -17,7 +18,8 @@ use App\Http\Controllers\Admin\ContractController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $contracts = Contract::paginate(10); // Paginate with 10 contracts per page
+    return view('contracts.index',compact('contracts'));
 });
 
 Route::get('clients', [ClientController::class,'index'])->name('clients.index');

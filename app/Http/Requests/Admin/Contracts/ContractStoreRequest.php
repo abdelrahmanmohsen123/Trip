@@ -22,6 +22,7 @@ class ContractStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'trip_dates'=>['required','array'],
             'client_id' => 'required|numeric|exists:clients,id',
             'trips_count' => 'required|numeric',
             'start_date' => 'required|date',

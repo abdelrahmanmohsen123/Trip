@@ -38,9 +38,29 @@ class ContractController extends Controller
     public function store(ContractStoreRequest $request)
     {
         //
-        $data = $request->validated();
-        $data['contract_number'] =  'CONTACT_' . Carbon::now()->format('YmdHis');
-        $new_conreact = Contract::create($data);
+
+        $data = $request->except(['trip_dates','_token']);
+
+       // Find the last contract number in the database
+        $lastContractNumber = Contract::max('contract_number');
+
+        // Increment the last contract number by 1
+        $newContractNumber = $lastContractNumber + 1;
+
+        // Assign the new contract number to the data array
+        $data['contract_number'] =  $newContractNumber;
+        $new_contract = Contract::create($data);
+        // $new_conreact->trips()->attach()
+        foreach($request->trip_dates as $trip_date){
+            $new_contract->trips()->create(
+                [
+                    'trip_date'=>$trip_date,
+                    'contract_id' => $new_contract->id
+                ]);
+
+        }
+
+
         return redirect()->route('contracts.index')->with('success','Contract Created Success');
 
     }
